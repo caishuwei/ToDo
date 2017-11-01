@@ -73,7 +73,7 @@ public class StatisticsActivity extends AppCompatActivity {
         }
 
         ((ToDoApplication) getApplication()).getAppComponent()
-            .statisticsComponenet()
+            .statisticsComponentBuilder()
             .view(statisticsFragment)
             .build()
             .inject(this);

@@ -90,7 +90,7 @@ public class AddEditTaskActivity extends AppCompatActivity {
 
         // Create the presenter
         ((ToDoApplication) getApplication()).getAppComponent()
-                .addEditTaskComponent()
+                .addEditTaskComponentBuilder()
                 .view(addEditTaskFragment)
                 .taskId(taskId)
                 .dataMissing(shouldLoadDataFromRepo)

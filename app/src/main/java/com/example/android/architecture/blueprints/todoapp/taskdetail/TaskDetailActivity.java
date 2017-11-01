@@ -65,7 +65,7 @@ public class TaskDetailActivity extends AppCompatActivity {
 
         // Create the presenter
         ((ToDoApplication) getApplication()).getAppComponent()
-            .taskDetailComponent()
+            .taskDetailComponentBuilder()
             .view(taskDetailFragment)
             .taskId(taskId)
             .build()

@@ -18,6 +18,7 @@ package com.example.android.architecture.blueprints.todoapp.tasks;
 
 import com.example.android.architecture.blueprints.todoapp.R;
 import com.example.android.architecture.blueprints.todoapp.ToDoApplication;
+import com.example.android.architecture.blueprints.todoapp.di.component.TasksComponent;
 import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsActivity;
 import com.example.android.architecture.blueprints.todoapp.util.ActivityUtils;
 import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource;
@@ -75,11 +76,12 @@ public class TasksActivity extends AppCompatActivity {
         }
 
         // Create the presenter
+        //切面注入
         ((ToDoApplication) getApplication()).getAppComponent()
-            .tasksComponent()
-            .view(tasksFragment)
-            .build()
-            .inject(this);
+                .tasksComponentBuilder()//取得TaskComponent构建器
+                .view(tasksFragment)//注入视图实例到TaskComponent实例池
+                .build()
+                .inject(this);//将切面实例注入本类
 
         // Load previously saved state, if available.
         if (savedInstanceState != null) {
