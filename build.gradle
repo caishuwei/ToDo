@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,6 +15,10 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        //谷歌个版本依赖包所在的远程仓库
+        maven {
+            url "https://maven.google.com"
+        }
     }
 }
 
@@ -25,13 +29,13 @@ task clean(type: Delete) {
 // Define versions in a single place
 ext {
     // Sdk and tools
-    minSdkVersion = 10
-    targetSdkVersion = 25
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.0'
+    minSdkVersion = 14
+    targetSdkVersion = 26
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.2'
 
     // App dependencies
-    supportLibraryVersion = '25.3.1'
+    supportLibraryVersion = '26.0.0'
     guavaVersion = '18.0'
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'

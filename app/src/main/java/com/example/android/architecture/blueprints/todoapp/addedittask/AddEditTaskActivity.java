@@ -61,6 +61,9 @@ public class AddEditTaskActivity extends AppCompatActivity {
                 .findFragmentById(R.id.contentFrame);
 
         String taskId = getIntent().getStringExtra(AddEditTaskFragment.ARGUMENT_EDIT_TASK_ID);
+        if (taskId == null) {
+            taskId = "";
+        }
 
         setToolbarTitle(taskId);
 
@@ -87,16 +90,16 @@ public class AddEditTaskActivity extends AppCompatActivity {
 
         // Create the presenter
         ((ToDoApplication) getApplication()).getAppComponent()
-            .addEditTaskComponent()
-            .view(addEditTaskFragment)
-            .taskId(taskId)
-            .dataMissing(shouldLoadDataFromRepo)
-            .build()
-            .inject(this);
+                .addEditTaskComponent()
+                .view(addEditTaskFragment)
+                .taskId(taskId)
+                .dataMissing(shouldLoadDataFromRepo)
+                .build()
+                .inject(this);
     }
 
     private void setToolbarTitle(@Nullable String taskId) {
-        if(taskId == null) {
+        if (taskId == null) {
             mActionBar.setTitle(R.string.add_task);
         } else {
             mActionBar.setTitle(R.string.edit_task);
